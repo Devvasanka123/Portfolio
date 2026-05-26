@@ -33,12 +33,13 @@ right-6
 z-50
 p-4
 rounded-full
-bg-white/10
+bg-white/80 dark:bg-white/10
 backdrop-blur-xl
 border
-border-white/20
-hover:scale-110
-duration-300
+border-gray-200 dark:border-white/20
+text-gray-800 dark:text-gray-200
+shadow-xl hover:scale-110 active:scale-95
+transition-all duration-300
 "
 
 >

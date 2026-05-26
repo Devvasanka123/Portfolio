@@ -3,8 +3,6 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import MLJourney from "./components/MLJourney";
-import Loader from "./components/Loader";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ThemeToggle from "./components/ThemeToggle";
@@ -12,7 +10,7 @@ import ThemeToggle from "./components/ThemeToggle";
 function App() {
   return (
     <>
-      <Loader />
+      
 
       <div className="relative overflow-hidden">
 
@@ -47,7 +45,6 @@ function App() {
         <About />
         <Skills />
         <Projects />
-        <MLJourney />
         <Contact />
         <Footer />
         <ThemeToggle/>

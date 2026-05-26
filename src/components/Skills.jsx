@@ -1,169 +1,113 @@
 import { motion } from "framer-motion";
+import { FaCode, FaLaptopCode, FaTools, FaBrain, FaChevronRight } from "react-icons/fa";
 
-import {
-FaPython,
-FaNodeJs,
-FaGitAlt,
-FaGithub,
-FaHtml5,
-FaCss3Alt,
-FaJs,
-} from "react-icons/fa";
+function Skills() {
+  const skillCategories = [
+    {
+      title: "Languages",
+      icon: <FaCode size={22} className="text-indigo-500" />,
+      items: ["Python", "JavaScript", "C++", "C", "Java"],
+      color: "from-indigo-500/20 to-indigo-500/5"
+    },
+    {
+      title: "Web Development",
+      icon: <FaLaptopCode size={22} className="text-purple-500" />,
+      items: ["HTML5 & CSS3", "Tailwind CSS", "JavaScript ES6+", "Node.js & Express", "MongoDB & SQL"],
+      color: "from-purple-500/20 to-purple-500/5"
+    },
+    {
+      title: "Tools & Practices",
+      icon: <FaTools size={22} className="text-pink-500" />,
+      items: ["Git & GitHub", "VS Code", "Command Line", "Problem Solving", "Software Architecture"],
+      color: "from-pink-500/20 to-pink-500/5"
+    },
+    {
+      title: "Currently Learning",
+      icon: <FaBrain size={22} className="text-blue-500" />,
+      items: ["Machine Learning Basics", "Scikit-Learn", "Data Structures & Algorithms", "React Basics"],
+      color: "from-blue-500/20 to-blue-500/5"
+    }
+  ];
 
-import {
-SiMongodb,
-SiCplusplus,
-SiTailwindcss,
-SiMysql,
-SiScikitlearn
-} from "react-icons/si";
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
 
-const techStack=[
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
 
-{
-name:"Python",
-icon:<FaPython size={28}/>
-},
+  return (
+    <section id="skills" className="relative py-24 px-6 overflow-hidden">
+      {/* Background visual element */}
+      <div className="absolute top-1/3 left-1/10 w-96 h-96 rounded-full bg-indigo-500/5 blur-3xl -z-10" />
 
-{
-name:"C++",
-icon:<SiCplusplus size={28}/>
-},
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase">
+            Skills
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 text-gray-900 dark:text-white">
+            Technical Toolkit
+          </h2>
+          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+            Continuously expanding my skills through hands-on projects, rigorous B.Tech coursework, 
+            and focused self-study.
+          </p>
+        </div>
 
-{
-name:"HTML",
-icon:<FaHtml5 size={28}/>
-},
+        {/* Categories Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="relative p-[1px] rounded-3xl overflow-hidden bg-gradient-to-b from-gray-200/80 to-transparent dark:from-white/10 dark:to-white/0 shadow-lg hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-300"
+            >
+              {/* Inner card */}
+              <div className="h-full bg-white dark:bg-[#0b111e]/85 rounded-[23px] p-6 flex flex-col">
+                
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100 dark:border-white/5">
+                  <div className="p-2.5 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-150/50 dark:border-white/5 shadow-sm">
+                    {category.icon}
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                    {category.title}
+                  </h3>
+                </div>
 
-{
-name:"CSS",
-icon:<FaCss3Alt size={28}/>
-},
+                {/* Skills List */}
+                <ul className="space-y-4 flex-grow">
+                  {category.items.map((skill, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-350 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200 group">
+                      <FaChevronRight size={10} className="text-gray-300 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all duration-200" />
+                      <span className="font-medium">{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-{
-name:"JavaScript",
-icon:<FaJs size={28}/>
-},
-
-{
-name:"Node.js",
-icon:<FaNodeJs size={28}/>
-},
-
-{
-name:"MongoDB",
-icon:<SiMongodb size={28}/>
-},
-
-{
-name:"MySQL",
-icon:<SiMysql size={28}/>
-},
-
-{
-name:"Tailwind",
-icon:<SiTailwindcss size={28}/>
-},
-
-{
-name:"Git",
-icon:<FaGitAlt size={28}/>
-},
-
-{
-name:"GitHub",
-icon:<FaGithub size={28}/>
-},
-
-{
-name:"ML",
-icon:<SiScikitlearn size={28}/>
-}
-
-];
-
-function Skills(){
-
-return(
-
-<section
-id="skills"
-className="min-h-screen px-6 py-20"
->
-
-<div className="max-w-6xl mx-auto">
-
-<h2 className="text-4xl font-bold mb-12">
-Skills
-</h2>
-
-<div className="flex flex-wrap justify-center gap-8">
-
-{techStack.map((tech,index)=>(
-
-<motion.div
-
-key={index}
-
-initial={{
-opacity:0,
-y:50
-}}
-
-whileInView={{
-opacity:1,
-y:0
-}}
-
-whileHover={{
-scale:1.1,
-rotate:5
-}}
-
-transition={{
-duration:0.4
-}}
-
-className="
-w-36
-h-36
-rounded-3xl
-bg-white/5
-backdrop-blur-lg
-border
-border-white/10
-shadow-xl
-flex
-flex-col
-justify-center
-items-center
-gap-4
-cursor-pointer
-hover:bg-blue-500/10
-"
-
->
-
-<div>
-{tech.icon}
-</div>
-
-<p>
-{tech.name}
-</p>
-
-</motion.div>
-
-))}
-
-</div>
-
-</div>
-
-</section>
-
-)
-
+      </div>
+    </section>
+  );
 }
 
 export default Skills;
